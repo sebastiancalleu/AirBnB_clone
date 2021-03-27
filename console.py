@@ -115,13 +115,39 @@ class HBNBCommand(cmd.Cmd):
 
     def do_create(self, args):
         """ Create an object of any class"""
-        if not args:
+        lt0 = args.split(" ") #---Creating a list with all the arguments---
+        lt1 = [] #---Empty list for add only valid arguments---
+        for i in range(1, len(lt0)): #---With this cycle we remove all the data that doesnt have the structure key=value---
+            if "=" in lt0[i]:
+                lt1.append(lt0[i])
+        str1 = "=".join(lt1)
+        lt2 = str1.split("=") #---Creating list with all the words inside the parameter (key, value, key, value, key, value, ...)---
+        it = iter(lt2[:]) #---method to iterathe all the parameters from lt2---
+        dct1 = dict(zip(it, it)) #---dictionary with all items---
+        dct2 = {} #---empty dictionary for add only valid items---
+        for key, value in dct1.items():
+            if value != value.strip('"'):
+                stripvalue = value.strip('"')
+                newvalue = stripvalue.replace("_", " ")
+                dct2[key] = newvalue
+            else:
+                if "." in value:
+                    newvalue = float(value)
+                    dct2[key] = newvalue
+                else:
+                    try:
+                        newvalue = int(value)
+                        dct2[key] = newvalue
+                    except:
+                        pass
+        if not lt0[0]:
             print("** class name missing **")
             return
-        elif args not in HBNBCommand.classes:
+        elif lt0[0] not in HBNBCommand.classes:
             print("** class doesn't exist **")
+            #print(type(dct1['name']))
             return
-        new_instance = HBNBCommand.classes[args]()
+        new_instance = HBNBCommand.classes[lt0[0]](**dct2)
         storage.save()
         print(new_instance.id)
         storage.save()
