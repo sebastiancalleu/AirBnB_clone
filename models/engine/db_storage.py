@@ -19,6 +19,8 @@ class DBStorage():
         from ..state import State, Base
         from ..city import City
         from ..user import User
+        from ..place import Place
+        from ..review import Review
 
         if cls != None:
             #self.__session = Session(self.__engine)
@@ -29,18 +31,27 @@ class DBStorage():
                 dct[key] = row
             return (dct)
         else:
-            #Users = self.__session.query(User).all()
+            Users = self.__session.query(User).all()
             States = self.__session.query(State).all()
             Cities = self.__session.query(City).all()
             #Amenities = self.__session.query(Amenity).all()
-            #Reviews = self.__session.query(Review).all()
-            #Places = self.__session.query(Place).all()
+            Reviews = self.__session.query(Review).all()
+            Places = self.__session.query(Place).all()
             dct1 = {}
             for row in States:
                 key = "State" + "." + row.id
                 dct1[key] = row
             for row in Cities:
                 key = "City" + "." + row.id
+                dct1[key] = row
+            for row in Users:
+                key = "User" + "." + row.id
+                dct1[key] = row
+            for row in Reviews:
+                key = "Review" + "." + row.id
+                dct1[key] = row
+            for row in Places:
+                key = "Place" + "." + row.id
                 dct1[key] = row
             return(dct1)
 
@@ -60,6 +71,8 @@ class DBStorage():
         from ..state import State, Base
         from ..city import City
         from ..user import User
+        from ..place import Place
+        from ..review import Review
         Base.metadata.create_all(self.__engine)
         session = sessionmaker(self.__engine)
         session.configure(expire_on_commit=False)
