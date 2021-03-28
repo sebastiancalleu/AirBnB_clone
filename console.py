@@ -149,9 +149,7 @@ class HBNBCommand(cmd.Cmd):
             #print(type(dct1['name']))
             return
         new_instance = HBNBCommand.classes[lt0[0]](**dct2)
-        if os.getenv('HBNB_TYPE_STORAGE') == 'db':
-            storage.new(new_instance)
-        storage.save()
+        storage.new(new_instance)
         print(new_instance.id)
         storage.save()
 
