@@ -18,11 +18,12 @@ class FileStorage:
             lt0 = cls1.split(".")
             cls2 = lt0[-1]
             cls3 = cls2.replace("'>", "")
-            print(cls3)
+            #print(cls3)
             for key, value in FileStorage.__objects.items():
                 lt1 = key.split(".")
                 if lt1[0] == cls3:
                     dct1[key] = value
+            #print(dct1)
             return dct1
 
     def new(self, obj):
@@ -68,3 +69,4 @@ class FileStorage:
             objkey = "{}.{}".format(obj.__class__.__name__, obj.id)
             if objkey in FileStorage.__objects.keys():
                 del FileStorage.__objects[objkey]
+                self.save()
