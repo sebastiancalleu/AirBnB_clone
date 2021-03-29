@@ -11,4 +11,3 @@ class test_console(unittest.TestCase):
         pep8check = pep8.StyleGuide(quiet=True)
         check = pep8check.check_files(['console.py'])
         self.assertEqual(check.total_errors, 0, "style error go fix it.")
-                         
