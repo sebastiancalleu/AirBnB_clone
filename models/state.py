@@ -3,6 +3,7 @@
 from models.base_model import BaseModel, Base
 from sqlalchemy import Column, Integer, String
 from sqlalchemy.orm import relationship
+from models import storage
 import os
 
 
@@ -14,3 +15,12 @@ class State(BaseModel, Base):
         cities = relationship('City', cascade="delete")
     else:
         name = ""
+
+        @property
+        def cities(self):
+            cts = storage.all
+            ltcts = []
+            for objects in cts.values():
+                if self.id == objects.state_id:
+                    ltcts.append(objects)
+            return ltcts
