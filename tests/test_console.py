@@ -10,4 +10,5 @@ class test_console(unittest.TestCase):
         """method for test pep8 on console.py"""
         pep8check = pep8.StyleGuide(quiet=True)
         check = pep8check.check_files(['console.py'])
-        self.assertEqual(check.total_errors, 0, "style error go fix it."
+        self.assertEqual(check.total_errors, 0, "style error go fix it.")
+                         
