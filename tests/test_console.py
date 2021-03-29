@@ -13,10 +13,3 @@ class tests_Console(unittest.TestCase):
         result = pep8style.check_files(['console.py'])
         self.assertEqual(
             result.total_errors, 0, "Found code style errors (and warnings).")
-
-    def test_console_module_docstring(self):
-        """test docstring of the console.py"""
-        self.assertIsNot("console".__doc__, None,
-                         "console.py needs a docstring")
-        self.assertTrue(len("console".__doc__) >= 1,
-                        "console.py needs a docstring")
