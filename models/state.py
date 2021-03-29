@@ -18,7 +18,7 @@ class State(BaseModel, Base):
 
         @property
         def cities(self):
-            cts = storage.all
+            cts = storage.all(City)
             ltcts = []
             for objects in cts.values():
                 if self.id == objects.state_id:

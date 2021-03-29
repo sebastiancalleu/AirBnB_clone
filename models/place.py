@@ -6,6 +6,7 @@ from sqlalchemy.orm import relationship
 from models.user import User
 from models.city import City
 import os
+from models import storage
 
 
 class Place(BaseModel, Base):
@@ -37,3 +38,12 @@ class Place(BaseModel, Base):
         latitude = 0.0
         longitude = 0.0
         amenity_ids = []
+
+        @property
+        def reviews(self):
+            cts = storage.all(Review)
+            ltcts = []
+            for objects in cts.values():
+                if self.id == objects.state_id:
+                    ltcts.append(objects)
+            return ltcts
