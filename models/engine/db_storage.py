@@ -27,6 +27,7 @@ class DBStorage():
         from ..user import User
         from ..place import Place
         from ..review import Review
+        from ..amenity import Amenity
 
         if cls is not None:
             dct = {}
@@ -81,6 +82,7 @@ class DBStorage():
         from ..user import User
         from ..place import Place
         from ..review import Review
+        from ..amenity import Amenity
         Base.metadata.create_all(self.__engine)
         session = sessionmaker(self.__engine)
         session.configure(expire_on_commit=False)
