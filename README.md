@@ -94,7 +94,7 @@ Usage: destroy <class_name> <_id>
 ```
 (hbnb) destroy BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
 (hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
-** no instance found *
+** no instance found **
 (hbnb)   
 ```
 ###### Example 3: Update an object
