@@ -59,7 +59,7 @@ Advanced syntax is implemented for the following commands:
 
 	*count - Return number of object instances by class
 
-    *show - Shows an object based on class and UUID
+    * show - Shows an object based on class and UUID
 
 	* destroy - Destroys an object based on class and UUID
 
