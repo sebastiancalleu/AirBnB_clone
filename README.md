@@ -57,7 +57,7 @@ Advanced syntax is implemented for the following commands:
 
     *all - Shows all objects the program has access to, or all objects of a given class
 
-	*count - Return number of object instances by class
+	* count - Return number of object instances by class
 
     * show - Shows an object based on class and UUID
 
