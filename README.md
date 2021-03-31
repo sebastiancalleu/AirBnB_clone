@@ -97,7 +97,6 @@ Usage: destroy <class_name> <_id>
 ** no instance found **
 (hbnb)   
 ```
-
 ###### Example 3: Update an object
 Usage: update <class_name> <_id>
 ```
