@@ -40,7 +40,7 @@ This repository contains the initial stage of a student project to build a clone
 
     *destroy - Destroys an object based on class and UUID
 
-    * show - Shows an object based on class and UUID
+    *show - Shows an object based on class and UUID
 
     * all - Shows all objects the program has access to, or all objects of a given class
 
