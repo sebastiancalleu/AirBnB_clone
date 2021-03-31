@@ -61,7 +61,7 @@ Advanced syntax is implemented for the following commands:
 
     *show - Shows an object based on class and UUID
 
-	* destroy - Destroys an object based on class and UUID
+	*destroy - Destroys an object based on class and UUID
 
     * update - Updates existing attributes an object based on class name and UUID
 
