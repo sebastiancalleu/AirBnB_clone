@@ -109,7 +109,7 @@ class HBNBCommand(cmd.Cmd):
         exit()
 
     def help_EOF(self):
-        """Prints the help documentation for EOF """
+        """Prints the help documentation for EOF"""
         print("Exits the program without formatting\n")
 
     def emptyline(self):
