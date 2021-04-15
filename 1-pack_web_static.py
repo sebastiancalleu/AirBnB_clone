@@ -1,9 +1,11 @@
 #!/usr/bin/python3
+""" script to package the web_static folder """
 from fabric.api import local
 import datetime
 import os
 
 def do_pack():
+    """ function to make the package """
     str1 = (str(datetime.datetime.now()).split("."))[0]
     str1 = str1.replace("-", "").replace(":", "").replace(" ", "")
     command1 = local("mkdir -p versions")
