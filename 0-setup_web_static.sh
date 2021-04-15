@@ -4,6 +4,7 @@ apt list --installed 2>/dev/null | grep -q nginx || apt-get -y update
 apt list --installed 2>/dev/null | grep -q nginx || apt-get -y install nginx
 mkdir -p /data /data/web_static /data/web_static/releases/ /data/web_static/shared/ /data/web_static/releases/test/
 touch /data/web_static/releases/test/index.html
+echo -e "<html>\n\t<head>\n\t</head>\n\t<body>\n\t\tHolberton School\n\t</body>\n</html>" > /data/web_static/releases/test/index.html
 ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 if ! grep -q "location /hbnb_static" /etc/nginx/sites-available/default
