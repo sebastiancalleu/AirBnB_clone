@@ -6,7 +6,7 @@ then
     sudo apt-get install -y nginx
     sudo service nginx start
 fi
-mkdir -p /data /data/web_static /data/web_static/releases/ /data/web_static/shared/ /data/web_static/releases/test/
+sudo mkdir -p /data/web_static/shared/ /data/web_static/releases/test/
 echo -e "<html>\n\t<head>\n\t</head>\n\t<body>\n\t\tHolberton School\n\t</body>\n</html>" > /data/web_static/releases/test/index.html
 sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
