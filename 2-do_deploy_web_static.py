@@ -25,7 +25,7 @@ def do_deploy(archive_path):
     command3 = run('rm /tmp/{}'.format(filename))
     if command3.failed:
         return(False)
-    command3_2 = run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'.format(filenamewe))
+    command3_2 = run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'.format(filenamewe, filenamewe))
     if command3_2.failed:
         return(False)
     command3_3 = run('rm -rf /data/web_static/releases/{}/web_static'.format(filenamewe))
@@ -34,10 +34,10 @@ def do_deploy(archive_path):
     command4 = run('rm -rf /data/web_static/current')
     if command4.failed:
         return(False)
-    command5 = run('ln -s /data/web_static/releases/web_static/ /data/web_static/current')
+    command5 = run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(filenamewe))
     if command5.failed:
         return(False)
-    command6 = run('service nginx reload')
+    command6 = run('sudo service nginx reload')
     if command6.failed:
         return(False)
     print("New version deployed!")
