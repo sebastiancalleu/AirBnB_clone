@@ -37,8 +37,5 @@ def do_deploy(archive_path):
     command5 = run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(filenamewe))
     if command5.failed:
         return(False)
-    command6 = run('sudo service nginx reload')
-    if command6.failed:
-        return(False)
     print("New version deployed!")
     return(True)
