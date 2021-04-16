@@ -48,6 +48,7 @@ def do_deploy(archive_path):
     else:
         return(False)
 
+
 def deploy():
     """ function to complete deploy """
     path = do_pack()
