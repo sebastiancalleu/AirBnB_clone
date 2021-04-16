@@ -1,10 +1,12 @@
 #!/usr/bin/python3
+""" clean the releases """
 from fabric.api import local, run, env
 import datetime
 import os
 
 
 def do_clean(number=0):
+    """ function to clean the releases """
     if int(number) == 0:
         keepfiles = 2
     else:
