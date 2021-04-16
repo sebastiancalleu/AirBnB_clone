@@ -1,10 +1,14 @@
 #!/usr/bin/env bash
 # script to install and setup nginx to deploy
-apt list --installed 2>/dev/null | grep -q nginx || apt-get -y update
-apt list --installed 2>/dev/null | grep -q nginx || apt-get -y install nginx
+if ! command -v nginx &> /dev/null;
+then
+    sudo apt-get -y update
+    sudo apt-get install -y nginx
+    sudo service nginx start
+fi
 mkdir -p /data /data/web_static /data/web_static/releases/ /data/web_static/shared/ /data/web_static/releases/test/
 echo -e "<html>\n\t<head>\n\t</head>\n\t<body>\n\t\tHolberton School\n\t</body>\n</html>" > /data/web_static/releases/test/index.html
-ln -sf /data/web_static/releases/test/ /data/web_static/current
+sudo ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 if ! grep -q "location /hbnb_static" /etc/nginx/sites-available/default
 then
