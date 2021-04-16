@@ -18,7 +18,7 @@ def do_deploy(archive_path):
         run('rm /tmp/{}'.format(filename))
         route1 = ("/data/web_static/releases/{}/web_static/*"
                   .format(filenamewe))
-        route2 = ("/data/web_static/releases/{}/"
+        route2 = ("/data/web_static/releases/{}"
                   .format(filenamewe))
         run('mv {} {}'
             .format(route1, route2))
