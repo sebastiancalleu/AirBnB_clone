@@ -8,7 +8,7 @@ env.hosts = ['35.196.217.143', '3.85.208.251']
 
 def do_deploy(archive_path):
     """ function to deploy """
-    if path.exists(archive_path):
+    if path.isfile(archive_path):
         filename = archive_path.split("/")[1]
         filenamewe = filename.replace(".tgz", "")
         put('{}'.format(archive_path), '/tmp/')
