@@ -1,28 +1,10 @@
 #!/usr/bin/python3
 """ script to deploy a file to servers """
-from fabric.api import put, env, run, local
+from fabric.api import *
 from os import path
 import datetime
-import os
 
 env.hosts = ['35.196.217.143', '3.85.208.251']
-
-def do_pack():
-    """ function to make the package """
-    str1 = (str(datetime.datetime.now()).split("."))[0]
-    str1 = str1.replace("-", "").replace(":", "").replace(" ", "")
-    command1 = local("mkdir -p versions")
-    if command1.failed:
-        return(None)
-    path = "versions/web_static_{}.tgz".format(str1)
-    print("Packing web_static to {}".format(path))
-    command2 = local("tar -cvzf {} web_static".format(path))
-    if command2.failed:
-        return(None)
-    print("web_static packed: {} -> {}Bytes"
-          .format(path, os.path.getsize(path)))
-    return("versions/web_static_{}.tgz".format(str1))
-
 
 def do_deploy(archive_path):
     """ function to deploy """
