@@ -10,31 +10,16 @@ def do_deploy(archive_path):
     """ function to deploy """
     filename = archive_path.split("/")[1]
     filenamewe = filename.replace(".tgz", "")
-    if path.exists(archive_path) is False:
+    if path.exists(archive_path):
+        put('{}'.format(archive_path), '/tmp/')
+        run('mkdir -p /data/web_static/releases/{}/'.format(filenamewe))
+        run('tar zxvf /tmp/{} -C /data/web_static/releases/{}/'.format(filename, filenamewe))
+        run('rm /tmp/{}'.format(filename))
+        run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'.format(filenamewe, filenamewe))
+        run('rm -rf /data/web_static/releases/{}/web_static'.format(filenamewe))
+        run('rm -rf /data/web_static/current')
+        run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(filenamewe))
+        print("New version deployed!")
+        return(True)
+    else:
         return(False)
-    command1 = put('{}'.format(archive_path), '/tmp/')
-    if command1.failed:
-        return(False)
-    command1_2 = run('mkdir -p /data/web_static/releases/{}/'.format(filenamewe))
-    if command1_2.failed:
-        return(False)
-    command2 = run('tar zxvf /tmp/{} -C /data/web_static/releases/{}/'.format(filename, filenamewe))
-    if command2.failed:
-        return(False)
-    command3 = run('rm /tmp/{}'.format(filename))
-    if command3.failed:
-        return(False)
-    command3_2 = run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'.format(filenamewe, filenamewe))
-    if command3_2.failed:
-        return(False)
-    command3_3 = run('rm -rf /data/web_static/releases/{}/web_static'.format(filenamewe))
-    if command3_3.failed:
-        return(False)
-    command4 = run('rm -rf /data/web_static/current')
-    if command4.failed:
-        return(False)
-    command5 = run('ln -s /data/web_static/releases/{}/ /data/web_static/current'.format(filenamewe))
-    if command5.failed:
-        return(False)
-    print("New version deployed!")
-    return(True)
