@@ -13,7 +13,7 @@ def do_deploy(archive_path):
     filenamewe = filename.replace(".tgz", "")
     if path.exists(archive_path) is False:
         return(False)
-    command1 = put(archive_path, '/tmp/')
+    command1 = put('{}'.format(archive_path), '/tmp/')
     if command1.failed:
         return(False)
     command1_2 = run('mkdir -p /data/web_static/releases/{}/'.format(filenamewe))
