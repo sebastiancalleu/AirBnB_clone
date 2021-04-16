@@ -13,7 +13,7 @@ def do_deploy(archive_path):
         filenamewe = filename.replace(".tgz", "")
         put('{}'.format(archive_path), '/tmp/')
         run('mkdir -p /data/web_static/releases/{}'.format(filenamewe))
-        run('tar zxvf /tmp/{} -C /data/web_static/releases/{}/'
+        run('tar zxvf /tmp/{} -C /data/web_static/releases/{}'
             .format(filename, filenamewe))
         run('rm /tmp/{}'.format(filename))
         route1 = ("/data/web_static/releases/{}/web_static/*"
@@ -25,7 +25,7 @@ def do_deploy(archive_path):
         run('rm -rf /data/web_static/releases/{}/web_static'
             .format(filenamewe))
         run('rm -rf /data/web_static/current')
-        run('ln -s /data/web_static/releases/{} /data/web_static/current'
+        run('ln -s /data/web_static/releases/{}/ /data/web_static/current'
             .format(filenamewe))
         return(True)
     else:
