@@ -13,7 +13,7 @@ def do_deploy(archive_path):
     if path.exists(archive_path):
         put('{}'.format(archive_path), '/tmp/')
         run('mkdir -p /data/web_static/releases/{}/'.format(filenamewe))
-        run('tar zxvf /tmp/{} -C /data/web_static/releases/{}/'.format(filename, filenamewe))
+        run('tar -zxf /tmp/{} -C /data/web_static/releases/{}/'.format(filename, filenamewe))
         run('rm /tmp/{}'.format(filename))
         run('mv /data/web_static/releases/{}/web_static/* /data/web_static/releases/{}/'.format(filenamewe, filenamewe))
         run('rm -rf /data/web_static/releases/{}/web_static'.format(filenamewe))
