@@ -12,7 +12,11 @@ mkdir -p /data/web_static/releases/
 mkdir -p /data/web_static/shared/
 mkdir -p /data/web_static/releases/test/
 echo -e "<html>\n\t<head>\n\t</head>\n\t<body>\n\t\tHolberton School\n\t</body>\n</html>" > /data/web_static/releases/test/index.html
-ln -sf /data/web_static/releases/test /data/web_static/current
+if [ -d /data/web_static/current ]
+then
+	rm -rf /data/web_static/current
+fi
+ln -sf /data/web_static/releases/test/ /data/web_static/current
 chown -R ubuntu:ubuntu /data/
 #if ! grep -q "location /hbnb_static" /etc/nginx/sites-available/default
 #then
