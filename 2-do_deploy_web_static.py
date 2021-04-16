@@ -6,6 +6,7 @@ import datetime
 
 env.hosts = ['35.196.217.143', '3.85.208.251']
 
+
 def do_deploy(archive_path):
     """ function to deploy """
     if path.isfile(archive_path):
