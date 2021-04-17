@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """ script to deploy a file to servers """
-from fabric.api import *
+from fabric.api import env, run, put
 from os.path import isfile
 import datetime
 
@@ -10,7 +10,6 @@ env.hosts = ['35.196.217.143', '3.85.208.251']
 def do_deploy(archive_path):
     """ function to deploy """
     if isfile(archive_path) is False:
-        print("wtf")
         return(False)
     filename = archive_path.split("/")[1]
     filenamewe = filename.replace(".tgz", "")
