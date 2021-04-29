@@ -31,9 +31,9 @@ class DBStorage():
 
         if cls is not None:
             dct = {}
-            objects = self.__session.query(eval(cls)).all()
+            objects = self.__session.query(eval(cls.__name__)).all()
             for row in objects:
-                key = cls + "." + row.id
+                key = cls.__name__ + "." + row.id
                 dct[key] = row
             return (dct)
         else:
@@ -87,3 +87,6 @@ class DBStorage():
         session = sessionmaker(self.__engine)
         session.configure(expire_on_commit=False)
         self.__session = scoped_session(session)
+
+    def close(self):
+        self.__session.remove()
