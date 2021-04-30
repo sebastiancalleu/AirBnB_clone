@@ -9,13 +9,14 @@ import os
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
-@app.route("/cities_by_states")
-def hello():
+@app.route("/states")
+@app.route("/states/<text>")
+def hello(text=None):
     dct1 = storage.all(State)
     lt1 = []
     for i in dct1.values():
         lt1.append(i)
-    return render_template("8-cities_by_states.html", states=lt1)
+    return render_template("9-states.html", states=lt1, stateid=text)
 
 @app.teardown_appcontext
 def teardown_db(exception):
