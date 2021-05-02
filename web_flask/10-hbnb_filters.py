@@ -11,8 +11,10 @@ import os
 app = Flask(__name__)
 app.url_map.strict_slashes = False
 
+
 @app.route("/hbnb_filters")
-def hello(text=None):
+def statesandamenities(text=None):
+    """ method to retrieve all the states and amenities """
     dct1 = storage.all(State)
     lt1 = []
     for i in dct1.values():
@@ -23,8 +25,10 @@ def hello(text=None):
         lt2.append(i)
     return render_template("10-hbnb_filters.html", states=lt1, amenities=lt2)
 
+
 @app.teardown_appcontext
 def teardown_db(exception):
+    """ method to close the session after each request """
     storage.close()
 
 if __name__ == "__main__":
